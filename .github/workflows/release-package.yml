@@ -1,0 +1,52 @@
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            first-package
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+#      - run: npm ci
+      - run: |
+          cd first-package/
+          npm install
+#      - run: npm test
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./first-package
+    permissions:
+      packages: write
+      contents: read
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      CI: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            first-package
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+#      - run: npm ci
+      - run: |
+          npm install
+          npm run build
+          echo @progetti-da-collaborare:registry=https://npm.pkg.github.com/ > .npmrc
+          echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> .npmrc
+          npm publish
+#        working-directory: ./build/dist

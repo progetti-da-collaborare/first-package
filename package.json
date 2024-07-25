@@ -1,0 +1,14 @@
+{
+  "name": "try-simple-custom-github-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app:test": "cd first-package-test && npm start",
+    "package:test": "cd first-package && npm start",
+    "package:prod": "cd first-package && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
