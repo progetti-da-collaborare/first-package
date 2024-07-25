@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Qwe from "@progetti-da-collaborare/try-simple-package"
+import Qwe from "@progetti-da-collaborare/first-package"
 
 //const y = qwe()
 

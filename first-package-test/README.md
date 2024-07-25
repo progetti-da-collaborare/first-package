@@ -21,3 +21,5 @@ The issue seems to be resolved.
 Needed 
 ### `config.externals = {react: 'react'}`
 in webpack config. Not sure what was the problem.
+
+!!set-shell in scripts set shell, but changes are taken into account only on the sybsequent runs!!
