@@ -46,6 +46,6 @@
     "build/**/*"
   ],
   "publishConfig": {
-    "@progetti-da-collaborare:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/@progetti-da-collaborare:"
   }
 }
